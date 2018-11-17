@@ -1,0 +1,42 @@
+#include <iostream>
+
+using namespace std;
+
+int tests  = 0;
+
+void zamien(string &wynik,int &dlugosc);
+string ustaw(string ciag);
+
+
+int main()
+{
+    cin >> tests;
+
+    for(int i = 0; i < tests; i++)
+    {
+        string kolejka;
+        cin  >> kolejka;
+        cout << ustaw(kolejka);
+
+    }
+
+    return 0;
+}
+
+string ustaw(string ciag)
+{
+    string ostateczny;
+    int dlugosc = ciag.length();
+    int najwiekszy = ciag[0];
+
+    for(int i = 0; i < dlugosc; i++)
+    {
+        if(najwiekszy < ciag[i])
+            ostateczny+=ciag[i];
+    }
+
+
+
+    return ostateczny;
+
+}
