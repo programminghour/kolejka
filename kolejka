@@ -4,9 +4,24 @@ using namespace std;
 
 int tests  = 0;
 
-void zamien(string &wynik,int &dlugosc);
-string ustaw(string ciag);
 
+string ustaw(string ciag)
+{
+    bool zostaw[ciag.length()];
+    string ostateczny = "";
+    
+    for(int i = 0; i < ciag.length(); i++)
+        zostaw[i] = true;
+    
+    for(int i = ciag.length(); i > 0; i--)
+       if(ciag[i]>=ciag[i-1])
+        zostaw[i-1] = false; 
+   
+    for(int i = 0; i < ciag.length(); i++)
+        if(zostaw[i])
+            ostateczny += ciag[i];
+    return ostateczny;
+}
 
 int main()
 {
@@ -23,20 +38,3 @@ int main()
     return 0;
 }
 
-string ustaw(string ciag)
-{
-    string ostateczny;
-    int dlugosc = ciag.length();
-    int najwiekszy = ciag[0];
-
-    for(int i = 0; i < dlugosc; i++)
-    {
-        if(najwiekszy < ciag[i])
-            ostateczny+=ciag[i];
-    }
-
-
-
-    return ostateczny;
-
-}
