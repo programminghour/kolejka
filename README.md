@@ -1,5 +1,4 @@
 # kolejka
-do poprawy
 
 AL_01_02 - KOLEJKA
 
