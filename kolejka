@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 
  using namespace std;
 
@@ -7,26 +8,18 @@
 
  string ustaw(string ciag)
 {
-    bool zostaw[ ciag.length() ];
-    string ostateczny = "";
-
-    for(int i = 0; i < ciag.length(); i++)
-        zostaw[i] = true;
-
-    for(int i = ciag.length(); i > 0; i--)
-    {
-        if(ciag[i] >= ciag[i-1])
-        zostaw[i-1] = false;
-
+    for(int i = ciag.length()-1; i > 0; i--)
+    {   
         for(int j = i-1; j >= 0; j--)
-            if(  ciag[i-1] >=  ciag[j-1])
-                zostaw[j-1] = false;
+        {
+            if(  ciag[i] >=  ciag[j])
+            {
+                ciag.erase(j, 1);
+                i--;
+            }
+        }
     }
-
-    for(int i = 0; i < ciag.length(); i++)
-        if(zostaw[i])
-            ostateczny += ciag[i];
-     return ostateczny;
+     return ciag;
  }
 
  int main()
